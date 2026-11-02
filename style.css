@@ -1,4 +1,6 @@
-*{margin: 0; padding: 0;}
+*{margin: 0; padding: 0; box-sizing: border-box;}
+
+:root{ --c: 100px; }
 
 
 
@@ -11,6 +13,7 @@ body{
     gap: 30px;
 
     min-height: 100vh;
+    padding: 72px 12px 24px;
 
     background-color: #924AEA;
 }
@@ -19,12 +22,13 @@ h2{
     font-size: 48px;
     color: #ffffff;
     letter-spacing: 5px;
+    text-align: center;
 }
 
 .tabuleiro{
     display: grid;
-    grid-template-columns: repeat(3, 100px);
-    grid-template-rows: repeat(3, 100px);
+    grid-template-columns: repeat(3, var(--c));
+    grid-template-rows: repeat(3, var(--c));
     gap: 10px;
 }
 
@@ -43,17 +47,17 @@ h2{
     position: absolute;
     inset: 0;
     display: flex;
-    gap: 102px; 
+    gap: calc(var(--c) + 2px);
 }
 
 .tb-horizontal{
     flex-direction: column;
-    padding: 101px 0; 
+    padding: calc(var(--c) + 1px) 0;
 }
 
 .tb-vertical{
     flex-direction: row;
-    padding: 0 101px;
+    padding: 0 calc(var(--c) + 1px);
 }
 
 .tab{
@@ -74,11 +78,11 @@ h2{
 .casa{
     background-color: transparent;
 
-    width: 100px;
-    height: 100px;
+    width: var(--c);
+    height: var(--c);
 
     color: #ffffff;
-    font-size: 64px;
+    font-size: calc(var(--c) * 0.64);
 }
 
 #btn-reiniciar{
@@ -173,7 +177,7 @@ button{
     top: 64px;
     left: 50%;
     transform: translateX(-50%);
-    width: 300px;
+    width: min(300px, calc(100vw - 24px));
     max-height: calc(100vh - 100px);
     overflow-y: auto;
     padding: 18px;
@@ -235,3 +239,19 @@ button{
 }
 
 #btn-zerar:hover{ background-color: #924AEA; color: #ffffff; }
+
+@media (max-width: 480px){
+    :root{ --c: min(100px, 26vw); }
+
+    body{ gap: 20px; }
+
+    h2{ font-size: 28px; letter-spacing: 2px; }
+
+    .num-placar{ font-size: 17px; gap: 6px; padding: 0 12px; }
+    .placar b{ font-size: 19px; }
+    .placar{ gap: 8px; }
+
+    #btn-reiniciar{ font-size: 28px; padding: 14px 36px; }
+
+    .menu-config{ padding: 14px; gap: 12px; }
+}
