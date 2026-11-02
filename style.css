@@ -1,0 +1,237 @@
+*{margin: 0; padding: 0;}
+
+
+
+body{
+    font-family: "Jersey 10", sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+
+    min-height: 100vh;
+
+    background-color: #924AEA;
+}
+
+h2{
+    font-size: 48px;
+    color: #ffffff;
+    letter-spacing: 5px;
+}
+
+.tabuleiro{
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    gap: 10px;
+}
+
+.container-tab{
+    position: relative;
+}
+
+.bg-divs-tab{
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.tb-horizontal,
+.tb-vertical{
+    position: absolute;
+    inset: 0;
+    display: flex;
+    gap: 102px; 
+}
+
+.tb-horizontal{
+    flex-direction: column;
+    padding: 101px 0; 
+}
+
+.tb-vertical{
+    flex-direction: row;
+    padding: 0 101px;
+}
+
+.tab{
+    border-radius: 5px;
+    background-color: #99FF59;
+}
+
+.tb-horizontal .tab{
+    width: 100%;
+    height: 8px;
+}
+
+.tb-vertical .tab{
+    width: 8px;
+    height: 100%;
+}
+
+.casa{
+    background-color: transparent;
+
+    width: 100px;
+    height: 100px;
+
+    color: #ffffff;
+    font-size: 64px;
+}
+
+#btn-reiniciar{
+    font-size: 36px;
+    padding: 20px 50px;
+    border-radius: 50px;
+
+    box-shadow: 0 8px 8px #1d04272a;
+
+    transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+#btn-reiniciar:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 16px 8px #1d04272a;
+}
+
+#btn-reiniciar:active{
+    transform: scale(.95);
+    box-shadow: 0 2px 8px #1d04272a;
+}
+
+button{
+    font-family: "Jersey 10", sans-serif;
+    border: none;
+}
+
+
+
+.casa.vencedora{
+    animation: piscar 0.6s ease-in-out infinite;
+}
+
+@keyframes piscar{
+    0%, 100%{ opacity: 1; transform: scale(1); }
+    50%{ opacity: 0.2; transform: scale(1.2); }
+}
+
+.casa i{ pointer-events: none; }
+
+.placar{
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    right: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 120px;
+    z-index: 11;
+}
+
+.num-placar{
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 0 16px;
+    border-radius: 18px;
+    background-color: #1d042733;
+    color: #ffffff;
+    font-size: 20px;
+    white-space: nowrap;
+}
+
+.config-btn{
+    display: flex;
+}
+
+.placar b{ font-weight: normal; font-size: 22px; }
+.placar .lado-O, .placar .lado-O b{ color: #FFCD61; }
+.placar .versus, .placar .separador{ opacity: 0.7; }
+.placar .empates{ opacity: 0.9; }
+
+#btn-config{
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    font-size: 18px;
+    background-color: #ffffff;
+    color: #924AEA;
+    cursor: pointer;
+    box-shadow: 0 6px 8px #1d04272a;
+    transition: transform 0.3s ease-in-out;
+}
+
+#btn-config:hover{ transform: rotate(60deg); }
+
+.menu-config{
+    position: fixed;
+    top: 64px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+    padding: 18px;
+    border-radius: 20px;
+    background-color: #ffffff;
+    color: #3a1a63;
+    box-shadow: 0 12px 24px #1d042755;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.menu-config[hidden]{ display: none; }
+
+.menu-config h3{ font-size: 32px; font-weight: normal; }
+
+.cfg-jogador{ display: flex; flex-direction: column; gap: 6px; }
+.cfg-jogador label{ font-size: 22px; }
+
+.cfg-jogador input{
+    font-family: "Jersey 10", sans-serif;
+    font-size: 22px;
+    padding: 6px 12px;
+    border: 2px solid #924AEA55;
+    border-radius: 12px;
+    outline: none;
+}
+
+.cfg-jogador input:focus{ border-color: #924AEA; }
+
+.icones{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 6px;
+}
+
+.icones button{
+    aspect-ratio: 1;
+    font-size: 18px;
+    border-radius: 10px;
+    background-color: #f1e8fc;
+    color: #3a1a63;
+    cursor: pointer;
+}
+
+.icones button.selecionado{ background-color: #924AEA; color: #ffffff; }
+.icones button:disabled{ opacity: 0.25; cursor: not-allowed; }
+
+#btn-zerar{
+    font-size: 22px;
+    padding: 8px 20px;
+    border-radius: 30px;
+    background: transparent;
+    color: #924AEA;
+    border: 2px solid #924AEA;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+#btn-zerar:hover{ background-color: #924AEA; color: #ffffff; }

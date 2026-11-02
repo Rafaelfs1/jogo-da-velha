@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jogo da velha.com.br</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+10&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+
+    <div id="menu-config" class="menu-config" hidden>
+        <h3>Configurações</h3>
+
+        <div class="cfg-jogador">
+            <label for="nome-X">Jogador 1</label>
+            <input type="text" id="nome-X" placeholder="Jogador 1" maxlength="12" oninput="atualizarTela()">
+            <div class="icones" id="icones-X"></div>
+        </div>
+
+        <div class="cfg-jogador">
+            <label for="nome-O">Jogador 2</label>
+            <input type="text" id="nome-O" placeholder="Jogador 2" maxlength="12" oninput="atualizarTela()">
+            <div class="icones" id="icones-O"></div>
+        </div>
+
+        <button id="btn-zerar" onclick="zerarPlacar()">Zerar placar</button>
+    </div>
+
+    <header class="placar">
+        <div class="num-placar">
+            <span class="lado lado-X"><i id="icone-placar-X"></i>: <b id="pontos-X">0</b></span>
+            <span class="versus">x</span>
+            <span class="lado lado-O"><i id="icone-placar-O"></i>: <b id="pontos-O">0</b></span>
+            <span class="separador">-</span>
+            <span class="empates">empates <b id="pontos-empate">0</b></span>
+        </div>
+        <div class="config-btn">
+            <button id="btn-config" onclick="alternarMenu()" aria-label="Configurações" title="Configurações">
+                <i class="fa-solid fa-gear"></i>
+            </button>
+        </div>
+
+
+    </header>
+
+    <h2 id="mensagem"></h2>
+
+    <div class="container-tab">
+        <div class="tabuleiro">
+            <button class="casa" id="quadrado-0" onclick="clicarNoQuadrado(0)"></button>
+            <button class="casa" id="quadrado-1" onclick="clicarNoQuadrado(1)"></button>
+            <button class="casa" id="quadrado-2" onclick="clicarNoQuadrado(2)"></button>
+            <button class="casa" id="quadrado-3" onclick="clicarNoQuadrado(3)"></button>
+            <button class="casa" id="quadrado-4" onclick="clicarNoQuadrado(4)"></button>
+            <button class="casa" id="quadrado-5" onclick="clicarNoQuadrado(5)"></button>
+            <button class="casa" id="quadrado-6" onclick="clicarNoQuadrado(6)"></button>
+            <button class="casa" id="quadrado-7" onclick="clicarNoQuadrado(7)"></button>
+            <button class="casa" id="quadrado-8" onclick="clicarNoQuadrado(8)"></button>
+        </div>
+        <div class="bg-divs-tab">
+            <div class="tb-horizontal">
+                <div class="tab"></div>
+                <div class="tab"></div>
+            </div>
+            <div class="tb-vertical">
+                <div class="tab"></div>
+                <div class="tab"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <button id="btn-reiniciar" onclick="reiniciarJogo()">Próxima partida</button>
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
